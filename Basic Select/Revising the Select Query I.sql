@@ -2,4 +2,4 @@
 --SQL/Basic Select/Revising the Select Query I.sql
 
 SELECT * FROM city
-WHERE countrycode = 'USA' AND population> 100000;
+WHERE countrycode = 'USA' AND population > 100000;
