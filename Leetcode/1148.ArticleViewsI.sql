@@ -1,0 +1,8 @@
+--github.com/rajendra-patil96
+--SQL/leetcode/1148. Article Views I
+
+SELECT
+    DISTINCT author_id AS id
+FROM views
+WHERE author_id = viewer_id
+ORDER BY 1;
