@@ -1,0 +1,13 @@
+--github.com/rajendra-patil96
+--SQL/leetcode/1661. Average Time of Process per Machine
+
+SELECT
+    s.machine_id,
+    ROUND(AVG(e.timestamp - s.timestamp), 3) AS processing_time
+FROM activity s
+JOIN activity e
+ON s.machine_id = e.machine_id
+AND s.process_id = e.process_id
+AND s.activity_type = 'start'
+AND e.activity_type = 'end'
+GROUP BY 1;
