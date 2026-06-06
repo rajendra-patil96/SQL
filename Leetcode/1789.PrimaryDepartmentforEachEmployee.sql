@@ -1,9 +1,10 @@
 --github.com/rajendra-patil96
 --SQL/leetcode/1789. Primary Department for Each Employee
 
-SELECT
-    employee_id,
-    COALESCE(MAX(CASE WHEN primary_flag = 'Y' THEN department_id END),
-    MAX(department_id)) AS department_id
-FROM employee
-GROUP BY employee_id;
+SELECT employee_id, department_id
+FROM (
+    SELECT *,
+           COUNT(*) OVER (PARTITION BY employee_id) AS dept_count
+    FROM Employee
+) t
+WHERE dept_count = 1 OR primary_flag = 'Y';
